@@ -1,0 +1,69 @@
+================================================================================
+ACME CORPORATION - DATA RETENTION AND DISPOSAL POLICY
+Version 2.1 | Effective Date: January 1, 2025
+================================================================================
+
+SECTION 1: PURPOSE AND SCOPE
+================================================================================
+This policy establishes requirements for the retention, archival, and secure
+disposal of corporate data. It applies to all employees, contractors, and
+third-party vendors who handle company data.
+
+SECTION 2: DATA RETENTION SCHEDULES
+================================================================================
+Financial records, including invoices, receipts, and general ledger entries,
+must be retained for a minimum of 7 years in accordance with IRS regulations.
+Payroll records must be retained for 4 years after the tax year to which they
+relate. Contracts and legal agreements must be retained for 10 years after
+expiration or termination.
+
+Employee records must be retained for 7 years after the employee's termination
+date. Hiring and interview records for candidates who were not hired must be
+retained for 2 years. Performance review records must be retained for the
+duration of employment plus 5 years.
+
+Customer data and transaction logs must be retained for 5 years from the date
+of the last transaction. Support tickets and customer communications must be
+retained for 3 years.
+
+SECTION 3: ARCHIVAL REQUIREMENTS
+================================================================================
+Data older than 2 years that must be retained should be moved to cold storage
+(AWS S3 Glacier or equivalent). Archived data must remain accessible within
+72 hours of a retrieval request. Archived data must be indexed and tagged with
+retention expiry dates to enable automated purging.
+
+SECTION 4: SECURE DATA DISPOSAL
+================================================================================
+Electronic media containing sensitive or confidential data must be wiped using
+DoD 5220.22-M standard (3-pass overwrite) or physically destroyed before
+disposal. Hard drives from decommissioned servers must be degaussed and then
+shredded by a certified destruction vendor.
+
+Paper documents classified as Confidential or above must be shredded using a
+cross-cut or micro-cut shredder. Shredding must be performed by an approved
+vendor and a certificate of destruction must be obtained and filed.
+
+Cloud data that has passed its retention period must be deleted using the
+cloud provider's secure delete API, not standard delete. Deletion must be
+confirmed with an audit log entry.
+
+SECTION 5: LEGAL HOLDS
+================================================================================
+When litigation, regulatory investigation, or audit is reasonably anticipated,
+a legal hold must be placed on all relevant data. Legal holds override standard
+retention schedules and deletion processes. The Legal department is responsible
+for issuing and lifting legal holds. IT must implement a technical hold within
+24 hours of notification.
+
+SECTION 6: COMPLIANCE AND ENFORCEMENT
+================================================================================
+Violations of this policy may result in disciplinary action up to and including
+termination. Intentional destruction of records subject to a legal hold may
+constitute obstruction of justice and result in criminal liability.
+
+All employees must complete data retention training annually. Compliance with
+this policy is audited quarterly by the Information Governance team.
+================================================================================
+END OF POLICY
+================================================================================

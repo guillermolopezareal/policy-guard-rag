@@ -1,0 +1,80 @@
+ACME CORPORATION — INFORMATION SECURITY POLICY
+Version 3.2 | Effective Date: January 1, 2026 | Owner: Chief Information Security Officer
+
+================================================================================
+SECTION 1: PASSWORD AND AUTHENTICATION POLICY
+================================================================================
+
+All user passwords must be a minimum of 12 characters in length and include at least one uppercase letter, one lowercase letter, one number, and one special character. Passwords must be rotated every 90 days. Users are prohibited from reusing any of their last 12 passwords. Temporary passwords issued by IT must be changed upon first login.
+
+Multi-factor authentication (MFA) is mandatory for all employees accessing corporate systems remotely, all privileged accounts, and all systems that store or process personally identifiable information (PII). Acceptable MFA methods include authenticator apps (TOTP), hardware security keys (FIDO2), and SMS one-time codes as a last resort. SMS-based MFA should be avoided where possible due to SIM-swapping risks.
+
+Service accounts and system accounts must use certificates or API keys instead of passwords where technically feasible. API keys must be rotated every 180 days and stored in the approved secrets management system (HashiCorp Vault). Hardcoded credentials in source code are strictly prohibited and constitute a critical security violation.
+
+================================================================================
+SECTION 2: ACCESS CONTROL POLICY
+================================================================================
+
+Access to corporate systems and data must follow the principle of least privilege. Employees are granted access only to the systems and data required to perform their job duties. Access requests must be submitted through the IT Service Desk portal and approved by the employee's direct manager and the data owner.
+
+Privileged access (administrator rights, root access, database admin) requires additional approval from the CISO or designated deputy. Privileged access is reviewed quarterly. Any privileged account that has not been used in 30 days is automatically disabled pending review.
+
+User access rights must be reviewed in full every six months. When an employee changes roles or departments, their access must be re-evaluated within five business days. When an employee is terminated, all access must be revoked within four hours of the termination being processed in HR systems. IT must be notified of terminations before the employee's last working hour.
+
+Third-party vendors and contractors require a signed Non-Disclosure Agreement and a completed third-party risk assessment before any system access is granted. Vendor access must be time-limited (maximum 90 days per engagement) and reviewed at the end of each engagement period.
+
+================================================================================
+SECTION 3: DATA CLASSIFICATION AND HANDLING
+================================================================================
+
+All corporate data must be classified into one of four categories: Public, Internal, Confidential, and Restricted.
+
+Public data is information approved for external distribution, such as marketing materials and press releases. No special handling requirements apply.
+
+Internal data is information intended for use within the organization, such as internal memos, meeting notes, and project documentation. Internal data must not be shared outside the organization without manager approval.
+
+Confidential data includes employee records, financial data, contracts, and strategic plans. Confidential data must be encrypted at rest using AES-256 and in transit using TLS 1.2 or higher. Confidential data must not be stored on personal devices or unmanaged cloud storage services.
+
+Restricted data includes personally identifiable information (PII), payment card data (PCI), protected health information (PHI), and system credentials. Restricted data is subject to the strictest controls: access is limited to named individuals, all access is logged, data must be encrypted end-to-end, and any transfer outside approved systems requires CISO sign-off.
+
+Data retention periods are as follows: Public and Internal data — 3 years. Confidential data — 7 years. Restricted data — as required by applicable regulation (minimum 7 years for financial data, minimum 6 years for health data). Data that has exceeded its retention period must be securely destroyed using NIST 800-88 compliant methods.
+
+================================================================================
+SECTION 4: INCIDENT RESPONSE POLICY
+================================================================================
+
+A security incident is defined as any event that compromises or threatens to compromise the confidentiality, integrity, or availability of corporate information assets. All employees are required to report suspected security incidents immediately to the Security Operations Center (SOC) via the incident hotline (ext. 5555) or the security@acmecorp.com email alias.
+
+The incident response process follows four phases: Detection and Reporting, Containment, Eradication and Recovery, and Post-Incident Review.
+
+Upon receiving an incident report, the SOC must acknowledge the report within 15 minutes and assign a severity level within one hour. Severity levels are: Critical (active breach or data exfiltration in progress), High (confirmed compromise of a system or account), Medium (suspicious activity requiring investigation), Low (policy violation with no immediate threat).
+
+Critical and High incidents must be escalated to the CISO within one hour. For Critical incidents involving personal data, the Legal and Privacy team must be notified within two hours to assess regulatory notification obligations under GDPR, CCPA, or other applicable laws.
+
+All incidents must be fully documented in the incident management system. A post-incident review must be completed within 14 days of incident closure for all Critical and High severity incidents.
+
+================================================================================
+SECTION 5: ACCEPTABLE USE POLICY
+================================================================================
+
+Corporate systems, networks, and devices are provided for business purposes. Limited personal use is permitted provided it does not interfere with job duties, consume excessive resources, or violate any provision of this policy.
+
+The following activities are strictly prohibited on all corporate systems and networks: accessing, downloading, or distributing illegal content; using corporate resources for personal financial gain or outside business activities; attempting to bypass security controls or monitoring systems; installing unauthorized software; connecting unauthorized devices to the corporate network; sharing credentials with other users.
+
+Employees have no expectation of privacy when using corporate systems. ACME Corporation reserves the right to monitor, log, and inspect all activity on corporate-owned devices and networks. Monitoring is conducted in accordance with applicable law and with the knowledge that this policy constitutes notice of such monitoring.
+
+Violations of the Acceptable Use Policy may result in disciplinary action up to and including termination of employment, and may be reported to law enforcement where criminal activity is suspected.
+
+================================================================================
+SECTION 6: VULNERABILITY MANAGEMENT POLICY
+================================================================================
+
+All systems connected to the corporate network must be scanned for vulnerabilities at least monthly. External-facing systems and critical infrastructure must be scanned weekly. Penetration testing must be conducted at least annually by a qualified third-party firm.
+
+Vulnerabilities are prioritized using the CVSS scoring system. Critical vulnerabilities (CVSS 9.0–10.0) must be remediated within 7 days of discovery. High vulnerabilities (CVSS 7.0–8.9) must be remediated within 30 days. Medium vulnerabilities (CVSS 4.0–6.9) must be remediated within 90 days. Low vulnerabilities (CVSS 0.1–3.9) must be remediated within 180 days.
+
+Exceptions to remediation timelines must be approved by the CISO and require a documented compensating control. All exceptions are reviewed quarterly. Systems that cannot be patched within policy timelines must be isolated from the network until remediation is complete.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

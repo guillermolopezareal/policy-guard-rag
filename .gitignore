@@ -1,0 +1,23 @@
+# Environment
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Vector store (rebuilt by ingesting documents)
+chroma_db/
+
+# Debug scripts
+debug_*.py
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
