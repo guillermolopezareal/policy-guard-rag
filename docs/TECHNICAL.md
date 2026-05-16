@@ -53,11 +53,15 @@ Without RAG, an LLM asked "what is our password policy?" would answer from train
 
 | File | Responsibility |
 |------|---------------|
-| `main.py` | FastAPI app, HTTP endpoints, timing middleware |
-| `ingestor.py` | Document parsing, chunking, embedding, ChromaDB write |
-| `retriever.py` | Question embedding, vector similarity search, confidence scoring |
-| `generator.py` | Confidence gate, prompt construction, LLM call |
-| `models.py` | Pydantic request/response schemas |
+| `app/main.py` | FastAPI app, HTTP endpoints, timing middleware |
+| `app/ingestor.py` | Document parsing, chunking, embedding, ChromaDB write |
+| `app/retriever.py` | Question embedding, vector similarity search, confidence scoring |
+| `app/generator.py` | Confidence gate, prompt construction, LLM call |
+| `app/models.py` | Pydantic request/response schemas |
+| `scripts/test_ingest.py` | CLI helper to upload a file to `/ingest` |
+| `scripts/generate_sample_pdfs.py` | Generates the two sample PDF policy files |
+| `samples/` | Four sample policy documents (2 TXT, 2 PDF) |
+| `docs/` | GETTING_STARTED.md and TECHNICAL.md |
 
 ---
 

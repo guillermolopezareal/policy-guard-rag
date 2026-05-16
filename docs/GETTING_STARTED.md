@@ -15,7 +15,7 @@ This guide walks you through setting up and running PolicyGuard RAG from scratch
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/policy-guard-rag.git
+git clone https://github.com/guillermolopezareal/policy-guard-rag.git
 cd policy-guard-rag
 ```
 
