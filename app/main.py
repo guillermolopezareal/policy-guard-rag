@@ -8,10 +8,10 @@ from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.responses import JSONResponse
 import chromadb
 
-from models import IngestResponse, QueryRequest, QueryResponse
-from ingestor import ingest_document
-from retriever import retrieve
-from generator import generate_answer
+from .models import IngestResponse, QueryRequest, QueryResponse
+from .ingestor import ingest_document
+from .retriever import retrieve
+from .generator import generate_answer
 
 chroma = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma.get_or_create_collection("policies")

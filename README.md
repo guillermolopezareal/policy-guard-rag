@@ -36,7 +36,7 @@ cp .env.example .env
 # Edit .env and set your OpenAI API key
 
 # 4. Start the server
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 The API will be available at `http://localhost:8000`.  
@@ -124,15 +124,15 @@ Four sample policy documents are included for testing:
 
 To ingest all four using the included helper script:
 ```bash
-python test_ingest.py sample_security_policy.txt
-python test_ingest.py sample_data_retention_policy.txt
-python test_ingest.py sample_access_control_policy.pdf
-python test_ingest.py sample_incident_response_policy.pdf
+python scripts/test_ingest.py samples/sample_security_policy.txt
+python scripts/test_ingest.py samples/sample_data_retention_policy.txt
+python scripts/test_ingest.py samples/sample_access_control_policy.pdf
+python scripts/test_ingest.py samples/sample_incident_response_policy.pdf
 ```
 
 To regenerate the PDF files:
 ```bash
-python generate_sample_pdfs.py
+python scripts/generate_sample_pdfs.py
 ```
 
 ---
@@ -175,17 +175,23 @@ This prevents the LLM from hallucinating answers using its pretrained knowledge 
 ## Project structure
 
 ```
-main.py                          # FastAPI app, endpoints, timing middleware
-ingestor.py                      # PDF/TXT parsing, chunking, embedding, ChromaDB upsert
-retriever.py                     # Question embedding, similarity search, confidence scoring
-generator.py                     # Confidence gate, GPT-4o-mini grounded generation
-models.py                        # Pydantic models: IngestResponse, QueryRequest, QueryResponse
+app/
+├── main.py                      # FastAPI app, endpoints, timing middleware
+├── ingestor.py                  # PDF/TXT parsing, chunking, embedding, ChromaDB upsert
+├── retriever.py                 # Question embedding, similarity search, confidence scoring
+├── generator.py                 # Confidence gate, GPT-4o-mini grounded generation
+└── models.py                    # Pydantic models: IngestResponse, QueryRequest, QueryResponse
+docs/
+├── GETTING_STARTED.md           # Setup and usage guide
+└── TECHNICAL.md                 # RAG architecture and implementation details
+samples/
+├── sample_security_policy.txt
+├── sample_data_retention_policy.txt
+├── sample_access_control_policy.pdf
+└── sample_incident_response_policy.pdf
+scripts/
+├── test_ingest.py               # Helper script to ingest a file from the command line
+└── generate_sample_pdfs.py      # Generates the two sample PDF policy files
 requirements.txt
 .env.example                     # OPENAI_API_KEY template
-test_ingest.py                   # Helper script to ingest a file from the command line
-generate_sample_pdfs.py          # Generates the two sample PDF policy files
-sample_security_policy.txt
-sample_data_retention_policy.txt
-sample_access_control_policy.pdf
-sample_incident_response_policy.pdf
 ```

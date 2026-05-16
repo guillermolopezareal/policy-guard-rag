@@ -1,6 +1,6 @@
 from openai import OpenAI
-from models import QueryResponse, SourceChunk
-from retriever import CONFIDENCE_THRESHOLD
+from .models import QueryResponse, SourceChunk
+from .retriever import CONFIDENCE_THRESHOLD
 
 client = OpenAI()
 

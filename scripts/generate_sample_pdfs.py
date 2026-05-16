@@ -1,4 +1,8 @@
 import fitz
+import os
+
+OUTPUT_DIR = "samples"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 POLICIES = {
     "sample_access_control_policy.pdf": """\
@@ -119,9 +123,9 @@ The CISO is responsible for approving all updates to this policy.
 }
 
 
-def create_pdf(filename: str, content: str) -> None:
+def create_pdf(filepath: str, content: str) -> None:
     doc = fitz.open()
-    page = doc.new_page(width=595, height=842)  # A4
+    page = doc.new_page(width=595, height=842)
 
     x, y = 50, 50
     line_height = 14
@@ -156,10 +160,10 @@ def create_pdf(filename: str, content: str) -> None:
                 page = doc.new_page(width=595, height=842)
                 y = 50
 
-    doc.save(filename)
-    print(f"Created {filename} ({doc.page_count} page(s))")
+    doc.save(filepath)
+    print(f"Created {filepath} ({doc.page_count} page(s))")
     doc.close()
 
 
 for fname, content in POLICIES.items():
-    create_pdf(fname, content)
+    create_pdf(os.path.join(OUTPUT_DIR, fname), content)

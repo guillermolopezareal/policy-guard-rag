@@ -15,7 +15,6 @@ def parse_pdf(file_bytes: bytes) -> list[str]:
             text = block[4].strip()
             if not text:
                 continue
-            # split within a block on double-newlines if present, else keep whole block
             sub_chunks = [c.strip() for c in text.split("\n\n") if c.strip()]
             for chunk in (sub_chunks or [text]):
                 if len(chunk) >= 50:

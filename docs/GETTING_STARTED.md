@@ -78,7 +78,7 @@ The `.env` file is listed in `.gitignore` so it will never be committed to versi
 ## 5. Start the server
 
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 The `--reload` flag automatically restarts the server when you edit a Python file.
@@ -110,10 +110,10 @@ The system starts with an empty knowledge base. You need to upload documents bef
 **Option A — using the helper script (recommended):**
 
 ```bash
-python test_ingest.py sample_security_policy.txt
-python test_ingest.py sample_data_retention_policy.txt
-python test_ingest.py sample_access_control_policy.pdf
-python test_ingest.py sample_incident_response_policy.pdf
+python scripts/test_ingest.py samples/sample_security_policy.txt
+python scripts/test_ingest.py samples/sample_data_retention_policy.txt
+python scripts/test_ingest.py samples/sample_access_control_policy.pdf
+python scripts/test_ingest.py samples/sample_incident_response_policy.pdf
 ```
 
 Each command prints how many chunks were stored:
@@ -126,7 +126,7 @@ Each command prints how many chunks were stored:
 
 ```bash
 curl -X POST http://localhost:8000/ingest \
-  -F "file=@sample_security_policy.txt"
+  -F "file=@samples/sample_security_policy.txt"
 ```
 
 **Option C — using the Swagger UI:**
@@ -218,7 +218,7 @@ Try these questions to exercise all four sample documents:
 You can ingest any PDF or TXT file you own:
 
 ```bash
-python test_ingest.py your_policy.pdf
+python scripts/test_ingest.py your_policy.pdf
 ```
 
 Or via the Swagger UI at http://localhost:8000/docs. Re-ingesting the same filename updates its chunks in place (upsert).
