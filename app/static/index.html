@@ -213,14 +213,11 @@
 
     .query-wrap input::placeholder { color: var(--muted); }
 
-    /* ─── RUN BUTTON ──────────────────────────────────────────────────────── */
-    #q-btn {
+    /* ─── PARALLELOGRAM BUTTONS ─────────────────────────────────────────────── */
+    .para-btn {
       position: relative;
       overflow: hidden;
-      background: rgba(99, 102, 241, 0.07);
-      border: 1.5px solid var(--accent);
       clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-      color: var(--accent);
       cursor: pointer;
       font-family: var(--mono);
       font-size: 0.72rem;
@@ -232,8 +229,7 @@
       transition: background 0.22s, color 0.22s;
     }
 
-    /* sweep shimmer on hover */
-    #q-btn::before {
+    .para-btn::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -246,9 +242,23 @@
       pointer-events: none;
     }
 
-    #q-btn:hover:not(:disabled)::before {
+    .para-btn:hover:not(:disabled)::before {
       transform: translateX(100%);
       transition: transform 0.45s ease;
+    }
+
+    .para-btn:disabled { cursor: not-allowed; }
+
+    @keyframes btn-pulse {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(167,139,250,0.3)); }
+      50%       { filter: drop-shadow(0 0 14px rgba(167,139,250,0.7)); }
+    }
+
+    /* RUN button — indigo palette */
+    #q-btn {
+      background: rgba(99, 102, 241, 0.07);
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
     }
 
     #q-btn:hover:not(:disabled) {
@@ -261,35 +271,6 @@
     #q-btn:active:not(:disabled) {
       background: rgba(99,102,241,0.24);
       filter: drop-shadow(0 0 6px rgba(99,102,241,0.4));
-    }
-
-    #q-btn:disabled { cursor: not-allowed; }
-
-    /* state variants */
-    #q-btn.s-running {
-      border-color: var(--c-embed);
-      color: var(--c-embed);
-      background: rgba(167,139,250,0.07);
-      animation: btn-pulse 1.4s ease-in-out infinite;
-    }
-
-    #q-btn.s-done {
-      border-color: var(--c-ans);
-      color: var(--c-ans);
-      background: rgba(34,197,94,0.08);
-      filter: drop-shadow(0 0 8px rgba(34,197,94,0.45));
-    }
-
-    #q-btn.s-error {
-      border-color: var(--c-block);
-      color: var(--c-block);
-      background: rgba(239,68,68,0.08);
-      filter: drop-shadow(0 0 8px rgba(239,68,68,0.45));
-    }
-
-    @keyframes btn-pulse {
-      0%, 100% { filter: drop-shadow(0 0 4px rgba(167,139,250,0.3)); }
-      50%       { filter: drop-shadow(0 0 14px rgba(167,139,250,0.7)); }
     }
 
     /* ─── PARAM CONTROLS ──────────────────────────────────────────────────── */
@@ -949,39 +930,12 @@
     .ingest-status.ok  { color: var(--c-ans); }
     .ingest-status.err { color: var(--c-block); }
 
-    /* ingest button — same parallelogram as #q-btn, emerald palette */
+    /* INGEST button — emerald palette */
     #ingest-btn {
-      position: relative;
-      overflow: hidden;
       background: rgba(34,197,94,0.07);
       border: 1.5px solid var(--c-ans);
-      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
       color: var(--c-ans);
-      cursor: pointer;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      padding: 0.68rem 2rem;
-      text-transform: uppercase;
-      white-space: nowrap;
-      transition: background 0.22s, color 0.22s;
       flex-shrink: 0;
-    }
-
-    #ingest-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.09) 50%, transparent 70%);
-      transform: translateX(-100%);
-      transition: none;
-      pointer-events: none;
-    }
-
-    #ingest-btn:hover:not(:disabled)::before {
-      transform: translateX(100%);
-      transition: transform 0.45s ease;
     }
 
     #ingest-btn:hover:not(:disabled) {
@@ -996,8 +950,10 @@
       filter: drop-shadow(0 0 6px rgba(34,197,94,0.4));
     }
 
-    #ingest-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    #ingest-btn:disabled { opacity: 0.35; }
 
+    /* shared button state classes */
+    #q-btn.s-running,
     #ingest-btn.s-running {
       border-color: var(--c-embed);
       color: var(--c-embed);
@@ -1005,6 +961,7 @@
       animation: btn-pulse 1.4s ease-in-out infinite;
     }
 
+    #q-btn.s-done,
     #ingest-btn.s-done {
       border-color: var(--c-ans);
       color: var(--c-ans);
@@ -1012,6 +969,7 @@
       filter: drop-shadow(0 0 8px rgba(34,197,94,0.45));
     }
 
+    #q-btn.s-error,
     #ingest-btn.s-error {
       border-color: var(--c-block);
       color: var(--c-block);
@@ -1066,7 +1024,7 @@
 
     <div class="ingest-footer">
       <div id="ingest-status" class="ingest-status"></div>
-      <button id="ingest-btn" disabled onclick="doIngest()">⬆&nbsp;&nbsp;INGEST</button>
+      <button id="ingest-btn" class="para-btn" disabled onclick="doIngest()">⬆&nbsp;&nbsp;INGEST</button>
     </div>
   </div>
 
@@ -1096,9 +1054,8 @@
       </div>
     </div>
 
-    <div style="margin-left:auto; display:flex; flex-direction:column; gap:6px">
-      <div class="param-label" style="opacity:0; pointer-events:none">execute</div>
-      <button id="q-btn" onclick="runTrace()">▶&nbsp;&nbsp;RUN</button>
+    <div style="margin-left:auto; margin-top:1.1rem">
+      <button id="q-btn" class="para-btn" onclick="runTrace()">▶&nbsp;&nbsp;RUN</button>
     </div>
   </div>
 
@@ -1424,18 +1381,18 @@
   function reveal(el, ms) { setTimeout(() => el.classList.add('visible'), ms); }
 
   function setBtnState(state) {
-    qBtn.className = '';
+    qBtn.classList.remove('s-running', 's-done', 's-error');
     qBtn.disabled = false;
     if (state === 'running') {
-      qBtn.className = 's-running';
+      qBtn.classList.add('s-running');
       qBtn.disabled = true;
       qBtn.innerHTML = '◌&nbsp;&nbsp;RUNNING';
     } else if (state === 'done') {
-      qBtn.className = 's-done';
+      qBtn.classList.add('s-done');
       qBtn.innerHTML = '✓&nbsp;&nbsp;DONE';
       setTimeout(() => setBtnState('idle'), 2200);
     } else if (state === 'error') {
-      qBtn.className = 's-error';
+      qBtn.classList.add('s-error');
       qBtn.innerHTML = '✕&nbsp;&nbsp;ERROR';
       setTimeout(() => setBtnState('idle'), 2500);
     } else {
@@ -1596,7 +1553,7 @@
         `<div class="kv" style="margin-bottom:.7rem">
           <span class="kv-k">Model</span>          <span class="kv-v">${esc(d.generation_model || '')}</span>
           <span class="kv-k">Temperature</span>    <span class="kv-v">${d.generation_temperature}</span>
-          <span class="kv-k">Context chunks</span> <span class="kv-v">${d.retrieval_results.length}</span>
+          <span class="kv-k">Context chunks</span> <span class="kv-v">${usedCount} of ${d.retrieval_results.length} retrieved</span>
          </div>
          <details>
            <summary>CONTEXT INJECTED INTO PROMPT</summary>
@@ -1676,20 +1633,20 @@
 
   function setIngestBtn(state) {
     const btn = document.getElementById('ingest-btn');
-    btn.className = '';
+    btn.classList.remove('s-running', 's-done', 's-error');
     btn.disabled  = false;
     if (state === 'running') {
-      btn.className = 's-running';
+      btn.classList.add('s-running');
       btn.disabled  = true;
       btn.innerHTML = '◌&nbsp;&nbsp;UPLOADING';
     } else if (state === 'done') {
-      btn.className = 's-done';
+      btn.classList.add('s-done');
       btn.innerHTML = '✓&nbsp;&nbsp;DONE';
-      setTimeout(() => { btn.className = ''; btn.disabled = true; btn.innerHTML = '⬆&nbsp;&nbsp;INGEST'; }, 2200);
+      setTimeout(() => { btn.classList.remove('s-done'); btn.disabled = true; btn.innerHTML = '⬆&nbsp;&nbsp;INGEST'; }, 2200);
     } else if (state === 'error') {
-      btn.className = 's-error';
+      btn.classList.add('s-error');
       btn.innerHTML = '✕&nbsp;&nbsp;ERROR';
-      setTimeout(() => { btn.className = ''; btn.disabled = !selectedFile; btn.innerHTML = '⬆&nbsp;&nbsp;INGEST'; }, 2500);
+      setTimeout(() => { btn.classList.remove('s-error'); btn.disabled = !selectedFile; btn.innerHTML = '⬆&nbsp;&nbsp;INGEST'; }, 2500);
     } else {
       btn.innerHTML = '⬆&nbsp;&nbsp;INGEST';
       btn.disabled  = !selectedFile;
