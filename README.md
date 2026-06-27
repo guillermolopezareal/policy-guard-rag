@@ -52,23 +52,27 @@ The API will be available at `http://localhost:8000`.
 
 ## Visualization UI (`/viz`)
 
-Open `http://localhost:8000/viz` in a browser to access the visual interface. It has two tabs:
+Open `http://localhost:8000/viz` in a browser to access the visual interface. It has two tabs.
 
-**Ingest tab** — drag and drop a PDF or TXT file (or browse to select one) and click INGEST. The panel shows all documents currently in the knowledge base and updates after each ingest.
+**Ingest tab** — drag and drop a PDF or TXT file (or browse to select one) and click INGEST. The sidebar lists every document currently in the knowledge base and refreshes automatically after each upload.
 
-**Query tab** — type a policy question and click RUN. The UI renders:
-1. An animated SVG pipeline graph showing all 7 stages lighting up in sequence
-2. Stage detail cards with full data for each step:
-   - Embedding model and dimensions
-   - All retrieved chunks with L2 distances, cosine similarity scores, and color-coded confidence bars
-   - A SENT TO LLM / FILTERED OUT badge on each chunk
-   - Confidence gate result (pass/block) with threshold vs best score
-   - The exact context string injected into the LLM prompt
-   - The final answer
+![Ingest tab showing drag-and-drop zone and document list](screenshots/ingest.png)
+
+**Query tab** — type a policy question, optionally adjust the Top-K and confidence threshold steppers, and click RUN. An animated SVG pipeline graph lights up node by node as the request flows through the system.
+
+![Pipeline graph with all 7 stages lit after a successful query](screenshots/RAG_schema.png)
+
+Below the graph, stage detail cards expand the full data at each step. The vector search card shows every retrieved chunk with its cosine similarity score, a color-coded confidence bar, and a **SENT TO LLM** / **FILTERED OUT** badge indicating which chunks actually reached the model.
+
+![Vector search stage showing retrieved chunks with cosine scores and LLM badges](screenshots/Vector_search.png)
+
+The confidence gate card shows the best score against the threshold on a visual bar. If the gate passes, the LLM generation card displays the model, temperature, how many chunks were used, the exact context injected into the prompt (expandable), and the grounded answer.
+
+![Confidence gate PASS and LLM generation card with the final answer](screenshots/confidenceGate_LLMoutput.png)
 
 Two stepper controls let you adjust parameters before running:
 - **Top-K Chunks** (1–20, default 5): how many chunks ChromaDB returns
-- **Conf. Threshold** (0.05–0.95, default 0.25): minimum cosine similarity required to answer, and the per-chunk filter for what gets sent to the LLM
+- **Conf. Threshold** (0.05–0.95, default 0.25): minimum cosine similarity to answer, and the per-chunk filter for what gets sent to the LLM
 
 ---
 
