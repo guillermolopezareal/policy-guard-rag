@@ -6,12 +6,13 @@ load_dotenv()
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 import chromadb
 
-from .models import IngestResponse, QueryRequest, QueryResponse
+from .models import IngestResponse, QueryRequest, QueryResponse, TraceResponse
 from .ingestor import ingest_document
-from .retriever import retrieve
-from .generator import generate_answer
+from .retriever import retrieve, retrieve_with_trace
+from .generator import generate_answer, generate_answer_with_trace
 
 chroma = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma.get_or_create_collection("policies")
@@ -71,9 +72,26 @@ async def ingest(file: UploadFile = File(...)):
 @app.post("/query", response_model=QueryResponse)
 async def query(body: QueryRequest):
     try:
-        chunks = retrieve(body.question)
-        result = generate_answer(body.question, chunks)
+        chunks = retrieve(body.question, top_k=body.top_k)
+        result = generate_answer(body.question, chunks, confidence_threshold=body.confidence_threshold)
         return result
     except Exception as e:
         logger.exception("Query failed: %s", e)
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/query/trace", response_model=TraceResponse)
+async def query_trace(body: QueryRequest):
+    try:
+        chunks, total = retrieve_with_trace(body.question, top_k=body.top_k)
+        return generate_answer_with_trace(
+            body.question, chunks, total,
+            top_k=body.top_k,
+            confidence_threshold=body.confidence_threshold,
+        )
+    except Exception as e:
+        logger.exception("Trace query failed: %s", e)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+app.mount("/viz", StaticFiles(directory="app/static", html=True), name="viz")

@@ -1,0 +1,72 @@
+ACME CORPORATION — REMOTE WORK AND BRING YOUR OWN DEVICE (BYOD) POLICY
+Version 1.3 | Effective Date: January 1, 2026 | Owner: Chief Information Security Officer
+
+================================================================================
+SECTION 1: PURPOSE AND SCOPE
+================================================================================
+
+This policy establishes requirements for employees and contractors who work remotely or use personal devices to access corporate systems and data. It applies to all full-time employees, part-time employees, contractors, and interns who work outside of an ACME Corporation office or who use personal devices (BYOD) for business purposes.
+
+================================================================================
+SECTION 2: REMOTE WORK ELIGIBILITY AND APPROVAL
+================================================================================
+
+Remote work arrangements must be approved by the employee's direct manager and documented in the HR system. Employees handling Restricted data (as defined in the Information Security Policy) are only permitted to work remotely if their home environment meets the physical security requirements in Section 4 of this policy. Roles designated as "on-site only" are not eligible for remote work and are listed in the HR intranet.
+
+Employees must notify their manager and IT Security if they plan to work from a location outside of their registered home country for more than 5 consecutive business days. Cross-border remote work may trigger additional legal and data residency requirements.
+
+================================================================================
+SECTION 3: CORPORATE-ISSUED DEVICES
+================================================================================
+
+Corporate-issued laptops, phones, and tablets remain the property of ACME Corporation at all times. Employees must not allow family members, friends, or any other individuals to use corporate devices. Full-disk encryption (BitLocker for Windows, FileVault for macOS) must be enabled on all corporate laptops and must not be disabled by the user.
+
+Corporate devices must have the ACME endpoint protection agent (CrowdStrike Falcon) installed and running at all times. Employees must not attempt to uninstall, disable, or tamper with endpoint protection software. Operating system and application updates must be applied within 14 days of release.
+
+Corporate devices that are lost or stolen must be reported to the IT Security team immediately, and no later than 2 hours after discovery. IT will remotely wipe the device. Failure to report a lost or stolen device within this window is a policy violation.
+
+================================================================================
+SECTION 4: PERSONAL DEVICES (BYOD)
+================================================================================
+
+Employees who choose to use personal devices for work purposes must enroll their device in the ACME Mobile Device Management (MDM) system. Enrollment is voluntary, but unenrolled personal devices may not be used to access corporate email, internal applications, or any data classified as Confidential or above.
+
+Personal devices enrolled in MDM must meet the following minimum requirements: operating system must be no more than two major versions behind the current release; a screen lock with a PIN or biometric must be active with a maximum 5-minute idle timeout; the device must not be jailbroken or rooted. ACME Corporation reserves the right to remotely wipe the corporate container on enrolled personal devices if the device is reported lost, the employee is terminated, or a security incident is detected. ACME will not wipe personal data outside the corporate container.
+
+Employees who do not wish to enroll their personal device in MDM must use only the ACME web portal (browser-based access) for work tasks on personal devices and must ensure that no corporate files are downloaded to the personal device's local storage.
+
+================================================================================
+SECTION 5: HOME NETWORK AND CONNECTIVITY REQUIREMENTS
+================================================================================
+
+All remote access to corporate systems must use the ACME corporate VPN (GlobalProtect). The VPN must be active whenever accessing internal systems, shared drives, or any application not available on the public internet. Split tunneling is disabled on the corporate VPN; all traffic is routed through ACME's network when the VPN is active.
+
+Employees are responsible for maintaining a reasonably secure home network. Home routers must use WPA2 or WPA3 encryption. Employees must not work from public Wi-Fi networks (cafes, airports, hotels) without first connecting to the corporate VPN. The use of open or unsecured Wi-Fi networks for accessing corporate systems is prohibited regardless of VPN status.
+
+================================================================================
+SECTION 6: PHYSICAL SECURITY REQUIREMENTS FOR REMOTE WORK
+================================================================================
+
+Employees working remotely must ensure their workspace is free from unauthorized observation when handling Confidential or Restricted data. Privacy screens are required when working in any location where the display can be observed by others, including co-working spaces.
+
+Printed documents containing Confidential or Restricted data must not be left unattended and must be stored securely (locked drawer or cabinet) when not in use. Printed Confidential and Restricted documents must be shredded immediately after use; home printers may only be used for this purpose if the employee has an appropriately rated cross-cut shredder.
+
+Video and audio conferences involving sensitive business discussions should not be conducted in shared spaces such as open-plan co-working areas where conversations may be overheard.
+
+================================================================================
+SECTION 7: EXPENSE AND EQUIPMENT
+================================================================================
+
+ACME Corporation will provide a monthly stipend of $50 to cover home internet costs for employees on approved full-time remote work arrangements. Employees must retain receipts and submit reimbursement claims through Concur within 60 days of the expense. Employees are responsible for the cost of their home internet service; the stipend is a contribution, not a guarantee of full reimbursement.
+
+Additional peripherals (monitors, keyboards, ergonomic chairs) for home offices may be requested via the IT Asset Request portal. Approved items remain the property of ACME Corporation and must be returned upon termination or upon request. A one-time home office setup allowance of up to $500 is available to employees transitioning to a fully remote role; receipts must be submitted within 90 days.
+
+================================================================================
+SECTION 8: COMPLIANCE AND ENFORCEMENT
+================================================================================
+
+Violations of this policy may result in revocation of remote work privileges, disciplinary action, or termination of employment. Policy compliance for remote workers is assessed during the quarterly access review and during annual security audits. Employees with approved remote work arrangements must complete the Remote Work Security Training module annually.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

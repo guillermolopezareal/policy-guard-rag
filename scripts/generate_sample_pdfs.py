@@ -5,6 +5,204 @@ OUTPUT_DIR = "samples"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 POLICIES = {
+    "sample_business_continuity_policy.pdf": """\
+ACME CORPORATION - BUSINESS CONTINUITY AND DISASTER RECOVERY POLICY
+Version 2.0 | Effective Date: January 1, 2026 | Owner: Chief Technology Officer
+
+SECTION 1: PURPOSE AND SCOPE
+This policy establishes the requirements for ensuring that ACME Corporation can
+maintain or rapidly resume critical business operations following a disruptive event.
+It applies to all business units, IT systems, and third-party service providers that
+support critical ACME operations. Disruptive events covered include natural disasters,
+cyberattacks, infrastructure failures, pandemics, and supply chain disruptions.
+
+SECTION 2: RECOVERY OBJECTIVES
+Each critical system and business process must have a defined Recovery Time Objective
+(RTO) and Recovery Point Objective (RPO) approved by the system owner and the CTO.
+
+Tier 1 systems (mission-critical: payment processing, authentication, core APIs):
+RTO must not exceed 1 hour. RPO must not exceed 15 minutes. Tier 1 systems must
+use active-active or active-passive redundancy with automated failover.
+
+Tier 2 systems (business-critical: CRM, HR systems, internal communication tools):
+RTO must not exceed 4 hours. RPO must not exceed 1 hour. Tier 2 systems must
+replicate to a secondary region with a tested failover procedure.
+
+Tier 3 systems (important but non-critical: reporting dashboards, development tools):
+RTO must not exceed 24 hours. RPO must not exceed 4 hours. Tier 3 systems may
+use daily backups with manual restoration procedures.
+
+SECTION 3: BACKUP REQUIREMENTS
+All production data must be backed up daily at minimum. Tier 1 system data must be
+replicated continuously to a geographically separate data center or cloud region.
+Backups must be encrypted at rest using AES-256 and in transit using TLS 1.2 or
+higher. Backup encryption keys must be stored separately from the backup data and
+must not be accessible from the primary environment in the event of a ransomware attack.
+
+Backup restoration must be tested at least quarterly for Tier 1 systems, semi-annually
+for Tier 2 systems, and annually for Tier 3 systems. Restoration test results, including
+the time taken to restore and any errors encountered, must be documented and retained
+for 3 years. Failed restoration tests must be escalated to the CTO within 24 hours
+and remediated before the next scheduled production backup cycle.
+
+All backups must be retained according to the following schedule: daily backups for
+30 days, weekly backups for 12 months, monthly backups for 7 years. Backups subject
+to a legal hold must not be deleted regardless of retention schedule.
+
+SECTION 4: BUSINESS CONTINUITY PLANS
+Each department head is responsible for maintaining a Business Continuity Plan (BCP)
+for their department. BCPs must be reviewed and updated annually or following any
+significant change to business operations or critical systems. BCPs must identify:
+critical processes that must be maintained during a disruption; manual workarounds
+for automated processes; key personnel and alternates for each critical role; contact
+information for critical vendors and customers; and escalation procedures.
+
+The minimum staffing required to maintain critical operations during a disruption is
+defined as the Minimum Business Continuity Objective (MBCO). Department heads must
+identify which roles constitute the MBCO and ensure cross-training so that no single
+person is the sole owner of a critical process.
+
+SECTION 5: DISASTER RECOVERY PROCEDURES
+Upon declaration of a disaster or major business disruption, the Crisis Management Team
+(CMT) is activated. The CMT is chaired by the CEO and includes the CTO, CISO, CFO,
+Head of Legal, and Head of Communications. The CMT has authority to invoke the Disaster
+Recovery Plan, authorize emergency expenditure, and communicate with regulators.
+
+The Incident Commander (appointed by the CISO for cyber incidents, or the CTO for
+infrastructure incidents) coordinates technical recovery activities and provides status
+updates to the CMT every 30 minutes during an active disaster.
+
+Failover to the disaster recovery environment must be authorized by the CTO or a
+designated alternate. Failback to the primary environment requires a stability period
+of at least 4 hours after the root cause has been resolved and a sign-off from both
+the CTO and the system owner.
+
+SECTION 6: TESTING AND EXERCISES
+A full Business Continuity and Disaster Recovery tabletop exercise must be conducted
+annually, involving the CMT and all department heads. At least one live failover test
+for all Tier 1 systems must be conducted annually in a pre-announced maintenance window.
+A surprise or unannounced DR test must be conducted for at least one critical system
+each year. All tests must produce a written after-action report with findings and
+remediation timelines. Critical findings must be remediated within 30 days.
+
+SECTION 7: VENDOR AND THIRD-PARTY DEPENDENCIES
+All third-party vendors classified as critical (those whose unavailability would trigger
+an RTO breach for any Tier 1 or Tier 2 system) must provide evidence of their own
+business continuity and disaster recovery capabilities annually. Evidence may include
+SOC 2 Type II reports, independent audit results, or the vendor's own BCP documentation.
+Contracts with critical vendors must include SLAs aligned with ACME's RTO and RPO
+requirements and must specify the vendor's notification obligations in the event of
+a service disruption.
+
+SECTION 8: COMPLIANCE AND ENFORCEMENT
+Failure to maintain an up-to-date BCP, failure to test backups within the required
+schedule, or failure to remediate critical DR test findings within 30 days will be
+escalated to the relevant department head's manager and reported to the CTO and Board
+Audit Committee. Business continuity compliance is audited annually by the internal
+audit team.
+""",
+    "sample_vendor_risk_policy.pdf": """\
+ACME CORPORATION - VENDOR AND THIRD-PARTY RISK MANAGEMENT POLICY
+Version 1.2 | Effective Date: February 1, 2026 | Owner: Chief Information Security Officer
+
+SECTION 1: PURPOSE AND SCOPE
+This policy establishes the requirements for identifying, assessing, and managing risks
+associated with third-party vendors, suppliers, contractors, and service providers that
+have access to ACME Corporation systems, data, or facilities, or whose products or
+services are incorporated into ACME's operations. All business units that engage
+third parties are subject to this policy.
+
+SECTION 2: VENDOR CLASSIFICATION
+Vendors must be classified into one of three risk tiers based on the sensitivity of
+data they access and the criticality of the services they provide.
+
+Tier 1 (Critical Vendors): Vendors that process Restricted data, provide critical
+infrastructure services, or have administrative access to ACME systems. Examples include
+cloud infrastructure providers, payroll processors, and managed security service providers.
+Tier 1 vendors require the most rigorous due diligence and are reviewed annually.
+
+Tier 2 (High-Risk Vendors): Vendors that process Confidential data or provide services
+that, if disrupted, would materially impact ACME operations. Examples include CRM
+platforms, HR software providers, and marketing analytics tools. Tier 2 vendors
+are reviewed every 18 months.
+
+Tier 3 (Standard Vendors): Vendors that access only Internal or Public data and provide
+non-critical services. Examples include office supply vendors, event management firms,
+and business travel agencies. Tier 3 vendors complete a self-assessment questionnaire
+and are reviewed every 3 years.
+
+SECTION 3: VENDOR ONBOARDING AND DUE DILIGENCE
+No vendor may be onboarded or granted access to ACME systems or data until the
+applicable due diligence process has been completed and approved. The Procurement team
+is responsible for initiating the vendor onboarding workflow via the Vendor Portal.
+
+Tier 1 vendor due diligence must include: a completed Third-Party Risk Assessment
+questionnaire; review of SOC 2 Type II report (not older than 12 months) or
+equivalent; review of the vendor's information security policy and incident response
+plan; a penetration testing summary from the past 12 months; financial stability check;
+sanctions screening against OFAC and applicable international sanctions lists;
+a signed Data Processing Agreement (DPA) and Master Service Agreement (MSA);
+and CISO approval before access is granted.
+
+Tier 2 vendor due diligence must include: a completed Third-Party Risk Assessment
+questionnaire; review of SOC 2 Type I or II report or equivalent; a signed DPA;
+and IT Security team approval.
+
+Tier 3 vendor due diligence must include: completion of the ACME Vendor Self-Assessment
+form and a signed vendor agreement with standard security and confidentiality clauses.
+
+SECTION 4: CONTRACTUAL REQUIREMENTS
+All contracts with Tier 1 and Tier 2 vendors must include the following provisions:
+compliance with ACME's security requirements; the right to audit the vendor's security
+controls with reasonable notice; mandatory incident notification to ACME within 24 hours
+of any security incident that may affect ACME data; data breach notification timelines
+consistent with applicable law; data deletion or return upon contract termination;
+restriction on subcontracting to fourth parties without ACME's prior written consent;
+and compliance with applicable data protection laws (GDPR, CCPA, etc.).
+
+Contracts must not be executed, renewed, or modified without review and sign-off from
+Legal and, for Tier 1 vendors, the CISO.
+
+SECTION 5: ONGOING MONITORING
+Tier 1 vendors must undergo a formal annual review that reassesses their risk profile,
+reviews updated SOC 2 reports, and evaluates any security incidents that occurred
+during the year. Significant changes to a Tier 1 vendor's ownership, infrastructure,
+or security posture must be reported to ACME immediately and trigger an out-of-cycle
+review.
+
+Continuous monitoring of Tier 1 vendors must be performed using an approved vendor
+risk intelligence platform (e.g., BitSight, SecurityScorecard). Significant score
+drops or newly identified vulnerabilities in the vendor's publicly observable
+infrastructure must be escalated to the IT Security team within 48 hours for review.
+
+All vendors must be re-screened against sanctions lists at contract renewal and
+whenever the IT Security team issues a mandatory re-screen notice.
+
+SECTION 6: VENDOR OFFBOARDING
+When a vendor relationship ends, the following must be completed within 10 business days:
+revocation of all access credentials and API keys; confirmation that all ACME data
+held by the vendor has been deleted or returned (with written certification from the vendor);
+retrieval or verified destruction of any ACME-owned hardware in the vendor's possession;
+closure of the vendor record in the Vendor Portal; and retention of contract and
+due-diligence records for 7 years after the end of the relationship.
+
+If a vendor terminates the relationship unexpectedly or becomes insolvent, the IT Security
+team must be notified immediately to initiate emergency access revocation.
+
+SECTION 7: FOURTH-PARTY RISK
+Tier 1 vendors must disclose all subcontractors (fourth parties) that have access to
+ACME data. Fourth parties are subject to the same minimum security requirements as the
+vendor itself. Vendors must obtain ACME's written approval before adding new fourth
+parties with access to ACME data. ACME reserves the right to require replacement of
+any fourth party that fails to meet the applicable security standards.
+
+SECTION 8: COMPLIANCE AND ENFORCEMENT
+Non-compliance with this policy, including engaging a vendor without completing the
+required due diligence, is a policy violation that must be reported to the CISO.
+Violations may result in disciplinary action, contract suspension, or contract
+termination. Vendor risk management compliance is audited semi-annually by the
+Information Security team and reported to the Board Audit Committee annually.
+""",
     "sample_access_control_policy.pdf": """\
 ACME CORPORATION - ACCESS CONTROL POLICY
 Version 3.0 | Effective Date: March 1, 2025

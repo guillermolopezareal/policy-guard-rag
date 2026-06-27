@@ -1,0 +1,80 @@
+ACME CORPORATION — ARTIFICIAL INTELLIGENCE TOOLS USAGE POLICY
+Version 1.0 | Effective Date: March 1, 2026 | Owner: Chief Information Security Officer and Chief Technology Officer
+
+================================================================================
+SECTION 1: PURPOSE AND SCOPE
+================================================================================
+
+This policy governs the use of artificial intelligence (AI) tools, including large language models (LLMs), generative AI assistants, AI-powered coding tools, and AI image or content generators, by ACME Corporation employees and contractors. As AI tools become increasingly integrated into daily workflows, this policy ensures their use does not expose proprietary information, introduce compliance risk, or produce harmful or misleading outputs.
+
+This policy applies to all AI tools used for work purposes, whether accessed via a personal account, a corporate-licensed account, or an API, regardless of whether the tool is free or paid.
+
+================================================================================
+SECTION 2: APPROVED AND PROHIBITED AI TOOLS
+================================================================================
+
+The following AI tools are approved for general business use by ACME employees: Microsoft Copilot for Microsoft 365 (corporate license), GitHub Copilot (for engineering teams, corporate license), and ChatGPT Enterprise (corporate license with data privacy enabled). Use of these tools is subject to the data classification restrictions in Section 3.
+
+The use of AI tools outside the approved list requires written approval from the employee's manager and the IT Security team via the AI Tool Approval Request form (AI-001). Approval requests must include the name of the tool, the business use case, the data types that will be processed, and the vendor's data handling terms. Approvals are valid for 12 months and must be renewed.
+
+The following categories of AI tool use are prohibited without explicit written approval from the CISO: AI tools offered by vendors headquartered in or subject to the laws of countries on the ACME restricted vendor list; AI tools that do not offer a data processing agreement (DPA); browser-based AI tools that use submitted content for model training by default (unless the user has explicitly opted out); AI tools integrated with unauthorized third-party services that transmit data outside of approved systems.
+
+================================================================================
+SECTION 3: DATA CLASSIFICATION AND AI TOOLS
+================================================================================
+
+The data classification levels referenced in this section are defined in the ACME Information Security Policy.
+
+Public data may be submitted to any approved AI tool without restriction.
+
+Internal data may be submitted to approved AI tools that operate under a corporate license with data privacy protections (i.e., data is not used to train the AI model and is not retained by the vendor beyond the session). Employees must verify that the corporate license tier they are using provides these protections before submitting Internal data.
+
+Confidential data must not be submitted to any AI tool unless the tool is hosted on ACME-controlled infrastructure or a private cloud environment contracted specifically for ACME under a signed enterprise agreement with a DPA. Before submitting Confidential data, employees must obtain explicit approval from their manager and the data owner.
+
+Restricted data (including PII, PCI data, PHI, and system credentials) must never be submitted to any external AI tool under any circumstances. Restricted data may only be processed by AI systems deployed on ACME's internal infrastructure with appropriate access controls. Violation of this rule is a critical security incident and will be reported to the CISO within two hours.
+
+================================================================================
+SECTION 4: AI-GENERATED CONTENT AND QUALITY STANDARDS
+================================================================================
+
+AI-generated content must be reviewed and verified by the employee before it is used, shared, or submitted as final work. Employees are accountable for the accuracy and appropriateness of any content they publish or submit, regardless of whether it was produced with AI assistance.
+
+AI-generated content that will be shared externally (in customer communications, marketing materials, press releases, or regulatory filings) must be reviewed by a subject-matter expert and must comply with all applicable ACME content review processes. Regulatory filings, legal documents, and compliance reports must never be submitted without human review even if AI was used to draft them.
+
+Employees must disclose the use of AI generation tools when submitting content through any process that requires a declaration of authorship, including academic collaborations, patent filings, and externally published research.
+
+================================================================================
+SECTION 5: PROMPT INJECTION AND SECURITY RISKS
+================================================================================
+
+Employees must be aware of prompt injection attacks when using AI tools that process external content (emails, documents, web pages). A prompt injection attack occurs when malicious instructions embedded in external content cause an AI tool to take unintended actions, such as exfiltrating data or performing unauthorized operations. Employees must not instruct AI tools to directly process untrusted external content without awareness of this risk.
+
+AI-generated code produced by tools such as GitHub Copilot must be reviewed for security vulnerabilities before being merged into any codebase. AI-generated code must pass the same static analysis and code review process as human-written code. Employees must not accept AI-generated code suggestions that introduce hardcoded credentials, disable security controls, or bypass authentication mechanisms.
+
+Employees must not use AI tools to attempt to reproduce, reconstruct, or infer proprietary information about ACME systems, competitors, or clients based on partial information or indirect queries.
+
+================================================================================
+SECTION 6: INTELLECTUAL PROPERTY CONSIDERATIONS
+================================================================================
+
+Employees must not submit third-party copyrighted materials to AI tools in ways that could constitute copyright infringement. When using AI-generated images, text, or code in commercial contexts, employees must verify that the AI tool's license permits commercial use and that the output does not infringe on third-party intellectual property rights.
+
+ACME Corporation retains ownership of all work product created by employees using AI tools in the course of their employment, consistent with standard employment terms. Employees may not use corporate-licensed AI tools to produce content for personal financial gain or for use in outside employment.
+
+================================================================================
+SECTION 7: TRAINING AND AWARENESS
+================================================================================
+
+All employees must complete the AI Literacy and Security Awareness training module within 30 days of this policy's effective date and annually thereafter. Engineering teams that use AI coding assistants must complete an additional AI-Assisted Development Security training module annually.
+
+The AI Governance Committee, chaired by the CTO and CISO, will review this policy and the approved AI tool list quarterly to reflect the rapidly evolving AI landscape. Employees are encouraged to submit AI tool requests and feedback to the committee via the AI Tool Request form.
+
+================================================================================
+SECTION 8: COMPLIANCE AND ENFORCEMENT
+================================================================================
+
+Violations of this policy, particularly submission of Restricted data to external AI tools, will be treated as security incidents and investigated by the Security Operations Center. Disciplinary action may include revocation of AI tool access, formal written warning, or termination of employment, depending on severity and intent.
+
+================================================================================
+END OF DOCUMENT
+================================================================================
